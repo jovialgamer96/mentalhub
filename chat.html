@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar">
+      <div class="hamburger">≡</div>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="breathing.html">🧘 Breathing</a></li>
+        <li><a href="quote.html">💬 Motivation</a></li>
+        <li><a href="music.html">🎵 Music</a></li>
+      </ul>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-header">Mental Health Companion 🤍</div>
+      <div id="chatbox"></div>
+
+      <div class="input-area">
+        <textarea id="userInput" placeholder="How are you feeling today?"></textarea>
+        <button onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

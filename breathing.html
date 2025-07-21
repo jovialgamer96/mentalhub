@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathing Exercise</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive;
+    }
+
+    .breathe-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+
+    .timer-box {
+      display: flex;
+      gap: 20px;
+      background: #e0e0e0;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .timer-option {
+      width: 70px;
+      height: 70px;
+      background-color: #3f51b5;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .timer-option:hover {
+      background-color: #2c3fa0;
+    }
+
+    .countdown-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .yoga-emoji {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+
+    .countdown-timer {
+      font-size: 36px;
+      font-weight: bold;
+      color: #3f51b5;
+      margin-bottom: 20px;
+    }
+
+    .breathe-text {
+      font-size: 20px;
+      color: #444;
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      background-color: #3f51b5;
+      border-radius: 50%;
+      animation: breathe 8s infinite;
+      margin-bottom: 30px;
+    }
+
+    @keyframes breathe {
+      0% { transform: scale(1); opacity: 0.6; }
+      25% { transform: scale(1.5); opacity: 1; }
+      50% { transform: scale(1); opacity: 0.6; }
+      75% { transform: scale(0.8); opacity: 0.4; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar">
+      <div class="hamburger">≡</div>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="chat.html">💬 Chat</a></li>
+        <li><a href="quote.html">🌟 Motivation</a></li>
+        <li><a href="music.html">🎵 Music</a></li>
+      </ul>
+    </div>
+
+    <div class="chat-container">
+      <div class="breathe-container">
+
+        <!-- Timer Selection -->
+        <div class="timer-box" id="timerBox">
+          <div class="timer-option" onclick="startTimer(1)">1m</div>
+          <div class="timer-option" onclick="startTimer(2)">2m</div>
+          <div class="timer-option" onclick="askCustomTime()">Custom</div>
+        </div>
+
+        <!-- Countdown Screen -->
+        <div class="countdown-screen" id="countdownScreen">
+          <div class="yoga-emoji">🧘</div>
+          <div class="countdown-timer" id="countdownTimer">00:00</div>
+          <div class="breathe-text">Breathe in... Breathe out...</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let timer;
+    let remainingSeconds = 0;
+
+    function startTimer(minutes) {
+      clearInterval(timer);
+      remainingSeconds = minutes * 60;
+
+      document.getElementById("timerBox").style.display = "none";
+      document.getElementById("countdownScreen").style.display = "flex";
+
+      updateCountdownDisplay();
+
+      timer = setInterval(() => {
+        remainingSeconds--;
+        updateCountdownDisplay();
+        if (remainingSeconds <= 0) {
+          clearInterval(timer);
+          alert("Great job! Breathing session complete.");
+          location.reload(); // Reload to reset
+        }
+      }, 1000);
+    }
+
+    function askCustomTime() {
+      let min = prompt("Enter time in minutes (1–10):");
+      const value = parseInt(min);
+      if (!isNaN(value) && value > 0 && value <= 10) {
+        startTimer(value);
+      } else {
+        alert("Please enter a valid number between 1 and 10.");
+      }
+    }
+
+    function updateCountdownDisplay() {
+      const mins = Math.floor(remainingSeconds / 60);
+      const secs = remainingSeconds % 60;
+      const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      document.getElementById("countdownTimer").textContent = formatted;
+    }
+  </script>
+</body>
+</html>

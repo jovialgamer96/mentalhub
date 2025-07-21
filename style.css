@@ -1,0 +1,146 @@
+/* Reset + Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+/* Layout Wrapper */
+.wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 60px;
+  height: 100%;
+  background-color: #3f51b5;
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease;
+  z-index: 2;
+}
+
+.sidebar:hover {
+  width: 200px;
+}
+
+.hamburger {
+  text-align: center;
+  font-size: 26px;
+  margin: 20px 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .hamburger {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0 10px;
+  margin-top: 60px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  white-space: nowrap;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Chat UI */
+.chat-container {
+  margin-left: 60px;
+  width: calc(100% - 60px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.chat-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #3f51b5;
+}
+
+#chatbox {
+  flex: 1;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Input + Send Button */
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-area textarea {
+  flex: 1;
+  height: 60px;
+  resize: none;
+  padding: 10px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.input-area textarea::placeholder {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.input-area button {
+  height: 60px;
+  padding: 0 20px;
+  background: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.input-area button:hover {
+  background: #2c3fa0;
+}
